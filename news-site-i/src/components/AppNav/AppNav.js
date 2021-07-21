@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Nav from 'react-bootstrap/Nav'
 
-class AppNav extends Component {
+ const AppNav = (props) => {
 
-    displayNavItems = () => {
-    return this.props.navItems.map((item, index) => {
+    const displayNavItems = () => {
+    return props.navItems.map((item, index) => {
       return (
-        <Nav.Link href="#" key={index} value={item['value']} onClick={() => this.props.handleNavClick(item['value'])}>{item['label']}</Nav.Link>
+        <Nav.Link href="#" key={index} value={item['value']} onClick={() => props.handleNavClick(item['value'])}>{item['label']}</Nav.Link>
       )
     })
    }
 
-  render() {
     return (
           <Nav className="me-auto">
-            {this.displayNavItems()}
+            {displayNavItems()}
           </Nav>
     )
   }
-}
 
 export default AppNav;

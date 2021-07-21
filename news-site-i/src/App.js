@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import News from './data/news.json';
-import navItems from './data/navItems.json';
+import navItemsData from './data/navItems.json';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AppNav from './components/AppNav/AppNav.js';
@@ -9,27 +9,21 @@ import Article from './components/Article/Article.js'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+    
     const randomArticleIndex = Math.floor(Math.random() * News.length);
     const randomArticle = News[randomArticleIndex];
+    
+    const [navItems, setNavItems] = useState(navItemsData)
 
-    this.state = {
-      navItems: navItems,
-      article: {
-        id: randomArticleIndex,
-        title: randomArticle.title,
-        abstract: randomArticle.abstract,
-        byline: randomArticle.byline,
-        image: randomArticle.multimedia.length ? randomArticle.multimedia[0].url : null,
-        created_date: randomArticle.created_date
-      }
-    }
-  }
-
-  render() {
-    const { article, navItems } = this.state
+    const [article, setArticle] = useState({
+      id: randomArticleIndex,
+      title: randomArticle.title,
+      abstract: randomArticle.abstract,
+      byline: randomArticle.byline,
+      image: randomArticle.multimedia.length ? randomArticle.multimedia[0].url : null,
+      created_date: randomArticle.created_date
+    })
 
     return (
       <div className="App">
@@ -57,6 +51,6 @@ class App extends Component {
       </div>
     );
   }
-}
+
 
 export default App;

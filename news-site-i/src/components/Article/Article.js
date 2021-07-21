@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // 1. Display the `title` inside of an `<h1>` tag.
 // 2. Display the `created_date` in a `<p>` tag.
@@ -7,22 +7,21 @@ import React, { Component } from 'react';
 // 5. Display the `abstract` inside of a `<p>` tag.
 
 
-class Article extends Component {
-  render() {  
+const Article = (props) => {
+
     return (
       <div>
-        <h1>{this.props.title}</h1>
-        <p>{this.props.created_date}</p>
-        { this.props.byline &&
-        <h2>{this.props.byline}</h2>
+        <h1>{props.title}</h1>
+        <p>{props.created_date}</p>
+        { props.byline &&
+        <h2>{props.byline}</h2>
         }
-        { this.props.image &&
-        <img src={ this.props.image } alt="img"></img>
+        { props.image &&
+        <img src={ props.image } alt="img"></img>
         }
-        <p>{this.props.abstract}</p>
+        <p>{props.abstract}</p>
       </div>
     )
   }
-}
 
 export default Article;
